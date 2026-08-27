@@ -10,6 +10,7 @@ import { MenuBebida } from "../menu-bebida/menu-bebida";
   styleUrl: './bebidas.css',
 })
 export class Bebidas {
+  tituloPagina: string = 'Bebidas';
   tipoBusqueda: string = 'nombre';
   textoBusqueda: string = '';
   tipoBebida: string = '';
@@ -32,6 +33,10 @@ export class Bebidas {
     } else {
       this.menuHijo.cargarTodas();
     }
+  }
+
+  cambiarTituloCategoria(nombreCategoria: string): void {
+    this.tituloPagina = nombreCategoria;
   }
 }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ServicioApiBebidas } from '../servicios/servicio-api-bebidas';
 import { crearInformacionBebida, InformacionBebida } from '../entidades/informacion-bebida';
@@ -20,6 +20,7 @@ export class MenuBebida implements OnInit {
   error = signal<string>('');
   informacionSeleccionada = signal<InformacionBebida | null>(null);
    categoriaSeleccionada = signal<string>('todas');
+  @Output() categoriaCambiada = new EventEmitter<string>();
 
   constructor(private api: ServicioApiBebidas, private carrito: ServicioCarrito) {}
 
@@ -48,6 +49,7 @@ export class MenuBebida implements OnInit {
 
   cargarPorCategoriaB(categoria: string): void {
     this.categoriaSeleccionada.set(categoria);
+    this.categoriaCambiada.emit(this.nombreCategoria(categoria));
     this.cargando.set(true);
     this.error.set('');
     this.bebidas.set([]); // Limpia la lista anterior
@@ -64,6 +66,24 @@ export class MenuBebida implements OnInit {
         this.error.set(`No se pudieron cargar los platos de ${categoria}.`);
       }
     });
+  }
+
+  private nombreCategoria(categoria: string): string {
+    const nombres: { [categoria: string]: string } = {
+      'Ordinary Drink': 'Bebida común',
+      Cocktail: 'Cóctel',
+      Shake: 'Batido',
+      Cocoa: 'Cacao',
+      Shot: 'Shot',
+      'Other / Unknown': 'Otros',
+      Beer: 'Cerveza',
+      'Coffee / Tea': 'Café y té',
+      'Homemade Liqueur': 'Licor casero',
+      'Punch / Party Drink': 'Ponche',
+      'Soft Drink': 'Bebida sin alcohol'
+    };
+
+    return nombres[categoria] ?? categoria;
   }
 
   cargarPorTipoB(tipo: string): void {
