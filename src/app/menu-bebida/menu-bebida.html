@@ -1,0 +1,62 @@
+<div class="container mt-4">
+  <div *ngIf="cargando()" class="alert alert-info text-center">Cargando bebidas...</div>
+  <div *ngIf="error()" class="alert alert-danger text-center">{{ error() }}</div>
+
+  <!-- Botones de categorías limpios -->
+  <div class="d-flex gap-2 my-3 justify-content-center flex-wrap">
+    <button class="chip btn btn-outline-primary boton-categorias" (click)="cargarTodas()">Todos</button>
+    <button class="chip btn btn-outline-primary boton-categorias" (click)="cargarPorCategoriaB('Ordinary Drink')">Bebida común</button>
+    <button class="chip btn btn-outline-primary boton-categorias" (click)="cargarPorCategoriaB('Cocktail')">Coctel</button>
+    <button class="chip btn btn-outline-primary boton-categorias" (click)="cargarPorCategoriaB('Shake')">Batido</button>
+    <button class="chip btn btn-outline-primary boton-categorias" (click)="cargarPorCategoriaB('Cocoa')">Cacao</button>
+    <button class="chip btn btn-outline-primary boton-categorias" (click)="cargarPorCategoriaB('Shot')">Shot</button>
+    <button class="chip btn btn-outline-primary boton-categorias" (click)="cargarPorCategoriaB('Other / Unknown')">Otros</button>
+
+  </div>
+  <div class="row" *ngIf="!cargando()">
+    <div class="col-md-4 col-sm-6 mb-4" *ngFor="let bebida of bebidas()">
+      <div class="card h-100 shadow-sm border-0">
+        <img [src]="bebida.strDrinkThumb" [alt]="bebida.strDrink" class="card-img-top" style="height: 200px; object-fit: cover;">
+        
+        <div class="card-body d-flex flex-column justify-content-between">
+          <h5 class="card-title text-center">{{ bebida.strDrink }}</h5>
+          
+          <p class="precio text-center fw-bold text-success fs-5">
+            COP {{ precios()[bebida.idDrink] | number:'1.0-0' }}
+          </p>
+          <button class="boton-agregar" type="button" (click)="mostrarInformacion(bebida)">
+            Informacion
+          </button>
+          <button class="boton-agregar" (click)="agregarAlPedido(bebida)">
+            Agregar al pedido
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="cargandoInformacion()" class="alert alert-info text-center">
+    Cargando información...
+  </div>
+
+  <div class="modal-informacion" *ngIf="informacionSeleccionada() as informacion" (click)="cerrarInformacion()">
+    <div class="panel-informacion" role="dialog" aria-modal="true" [attr.aria-label]="informacion.nombre" (click)="$event.stopPropagation()">
+      <button class="boton-cerrar" type="button" aria-label="Cerrar información" (click)="cerrarInformacion()">×</button>
+      <img [src]="informacion.imagen" [alt]="informacion.nombre">
+      <div class="datos-informacion">
+        <h2>{{ informacion.nombre }}</h2>
+        <p><strong>Categoría:</strong> {{ informacion.categoria }}</p>
+        <p><strong>Tipo:</strong> {{ informacion.tipo }}</p>
+        <p><strong>Vaso:</strong> {{ informacion.vaso }}</p>
+        <p><strong>Precio:</strong> COP {{ informacion.precio | number:'1.0-0' }}</p>
+        <p class="titulo-ingredientes"><strong>Ingredientes:</strong></p>
+        <ul class="lista-ingredientes" *ngIf="informacion.ingredientes.length > 0; else sinIngredientes">
+          <li *ngFor="let ingrediente of informacion.ingredientes">{{ ingrediente }}</li>
+        </ul>
+        <ng-template #sinIngredientes>
+          <p>No disponibles</p>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<!-- 1. Carrusel de fotos del restaurante -->
+<div id="carruselInicio" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators" *ngIf="comidas().length">
+    <button
+      *ngFor="let comida of comidas(); let indice = index"
+      type="button"
+      data-bs-target="#carruselInicio"
+      [attr.data-bs-slide-to]="indice"
+      [class.active]="indice === 0"
+      [attr.aria-label]="comida.strMeal">
+    </button>
+  </div>
+  <div class="carousel-inner">
+    <div *ngFor="let comida of comidas(); let indice = index" class="carousel-item" [class.active]="indice === 0">
+      <img [src]="comida.strMealThumb" class="d-block w-100" [alt]="comida.strMeal">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carruselInicio" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carruselInicio" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>

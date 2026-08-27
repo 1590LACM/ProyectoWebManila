@@ -1,0 +1,33 @@
+
+.titulo-seccion {
+  font-family: 'Playfair Display', serif;
+  color: var(--color-acento-principal);
+  margin-bottom: 32px;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  border-color: black;
+  transform: translateY(-4px);
+}
+
+.card-img-top {
+  height: 400px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.card-title {
+  font-family: 'Playfair Display', serif;
+  color: var(--color-acento-principal);
+}
+
+.precio-destacado {
+  color: var(--color-acento-principal) !important;
+}
+

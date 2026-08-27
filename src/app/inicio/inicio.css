@@ -1,0 +1,34 @@
+
+
+
+h3 {
+  color: var(--color-acento-principal);
+}
+
+.titulo-seccion {
+  color: var(--color-acento-principal);
+}
+
+.btn-primary {
+  background-color: var(--color-acento-principal);
+  border-color: var(--color-acento-principal);
+  color: #101010;
+}
+
+.btn-primary:hover {
+  background-color: #b9ed7a;
+  border-color: #b9ed7a;
+  color: #101010;
+}
+
+.btn-secondary {
+  background-color: var(--color-acento-principal);
+  border-color: var(--color-acento-principal);
+  color: #101010;
+}
+
+.btn-secondary:hover {
+  background-color: #b9ed7a;
+  border-color: #b9ed7a;
+  color: #101010;
+}

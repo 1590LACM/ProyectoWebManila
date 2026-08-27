@@ -1,0 +1,25 @@
+<div class="encabezado">
+
+  <h1 class="titulo-pagina">Comidas</h1>
+
+  <div class="barra-busqueda">
+
+    <select class="filtro" [(ngModel)]="tipoBusqueda">
+      <option value="nombre">Buscar por nombre</option>
+      <option value="ingrediente">Buscar por ingrediente</option>
+    </select>
+
+    <input 
+      type="text" 
+      class="campo-texto" 
+      placeholder="Escribe aquí..." 
+      [(ngModel)]="textoBusqueda" 
+      (keyup.enter)="ejecutarBusqueda()">
+
+    <button class="boton-buscar" (click)="ejecutarBusqueda()">Buscar</button>
+
+  </div>
+
+</div>
+
+<app-menu-comida #menuHijo></app-menu-comida>

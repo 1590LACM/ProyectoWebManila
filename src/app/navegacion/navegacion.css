@@ -1,0 +1,49 @@
+.navegacion-custom {
+  background-color: #1a1a1a;
+  padding: 12px 24px;
+}
+
+.logo-restaurante {
+  height: 48px;
+  width: 48px;
+  object-fit: contain;
+}
+
+.texto-marca {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.nombre-restaurante {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: 22px;
+  color: var(--color-acento-principal);
+}
+
+.subtitulo-restaurante {
+  font-family: 'Playfair Display', serif;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--color-acento-principal);
+  text-transform: uppercase;
+}
+
+.nav-pills .nav-link {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.nav-pills .nav-link.enlace-verde {
+  color: var(--color-acento-principal);
+}
+
+.nav-pills .nav-link.active {
+  background-color: var(--color-acento-principal);
+  color: #101010;
+}
+
+.nav-pills .nav-link:focus-visible {
+  box-shadow: 0 0 0 3px rgba(168, 224, 99, 0.35);
+}

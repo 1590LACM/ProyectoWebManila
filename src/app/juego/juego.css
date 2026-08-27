@@ -1,0 +1,69 @@
+.tablero-juego {
+  display: grid;
+  grid-template-columns: repeat(4, 120px);
+  gap: 16px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Tarjeta principal que imita la primera imagen */
+.tarjeta {
+  width: 120px;
+  height: 120px;
+  background-color: #252525; /* Fondo oscuro idéntico */
+  border: 1px solid var(--color-acento-principal);
+  border-radius: 18px;      /* Bordes redondeados marcados */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.15s ease, background-color 0.2s ease;
+}
+
+.tarjeta:hover {
+  background-color: #303030;
+  border-color: #b9ed7a;
+  transform: scale(1.03);
+}
+
+/* Estilo del signo de interrogación naranja */
+.signo-pregunta {
+  color: #e65c00; /* Color naranja brillante */
+  font-size: 2.2rem;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  user-select: none;
+}
+
+/* Imagen revelada */
+.imagen-oculta {
+  display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.letrero {
+  margin-top: 24px;
+  text-align: center;
+  color: #e65c00;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.boton-reiniciar {
+  display: block;
+  margin: 16px auto 0;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 8px;
+  background-color: #e65c00;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+}

@@ -1,0 +1,18 @@
+.carousel {
+    width: min(100% - 2rem, 600px);
+    margin: 0 auto;
+}
+
+img {
+    width: 100%;
+    aspect-ratio: 4 / 2;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+}
+
+@media (max-width: 700px) {
+    img {
+        width: 100%;
+    }
+}

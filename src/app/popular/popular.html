@@ -1,0 +1,26 @@
+
+<div class="container mt-5">
+  <h2 class="text-center titulo-seccion">Nuestros destacados</h2>
+  <div class="row">
+    <div class="col-md-6 mb-4" *ngIf="platoEstrella() as plato">
+      <div class="card h-100">
+        <img [src]="plato.strMealThumb" [alt]="plato.strMeal" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">Plato estrella: {{ plato.strMeal }}</h5>
+          <p class="card-text">Ingredientes: {{ ingredientesPlato().join(', ') }}</p>
+          <p class="card-text fw-bold precio-destacado">COP {{ precioPlato() | number:'1.0-0' }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mb-4" *ngIf="bebidaEstrella() as bebida">
+      <div class="card h-100">
+        <img [src]="bebida.strDrinkThumb" [alt]="bebida.strDrink" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">Bebida estrella: {{ bebida.strDrink }}</h5>
+          <p class="card-text">Ingredientes: {{ ingredientesBebida().join(', ') }}</p>
+          <p class="card-text fw-bold precio-destacado">COP {{ precioBebida() | number:'1.0-0' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

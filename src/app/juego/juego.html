@@ -1,0 +1,14 @@
+<div class="tablero-juego">
+  @for (i of casillas; track i) {
+    <button class="tarjeta" (click)="descubrirO(i)" [id]="'tablero' + i">
+      <span class="signo-pregunta">🫣</span>
+      <img [id]="'img' + i" src="" class="imagen-oculta" alt="revelado" />
+    </button>
+  }
+</div>
+
+@if (letrero) {
+  <div class="letrero">{{ letrero }}</div>
+  <button class="boton-reiniciar" type="button" (click)="reiniciar()">reiniciar</button>
+}
+<hr>
