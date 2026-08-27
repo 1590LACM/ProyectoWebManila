@@ -12,6 +12,7 @@ import { MenuComida } from '../menu-comida/menu-comida';
 })
 export class Comidas {
 
+  tituloPagina: string = 'Comidas';
   tipoBusqueda: string = 'nombre';
   textoBusqueda: string = '';
 
@@ -22,5 +23,9 @@ export class Comidas {
     if (this.menuHijo) {
       this.menuHijo.buscarDesdePadre(this.tipoBusqueda, this.textoBusqueda);
     }
+  }
+
+  cambiarTituloCategoria(nombreCategoria: string): void {
+    this.tituloPagina = nombreCategoria;
   }
 }

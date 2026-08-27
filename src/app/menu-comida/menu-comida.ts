@@ -1,4 +1,4 @@
-import { Component, OnInit, signal, inject } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ServicioApi } from '../servicios/servicio-api';
 import { crearInformacionComida, InformacionComida } from '../entidades/informacion-comidas';
@@ -25,6 +25,7 @@ export class MenuComida implements OnInit {
   categoriaSeleccionada = signal<string>('todas');
   cargandoInformacion = signal<boolean>(false);
   informacionSeleccionada = signal<InformacionComida | null>(null);
+  @Output() categoriaCambiada = new EventEmitter<string>();
 
   ngOnInit(): void {
     this.cargarTodas();
@@ -51,6 +52,7 @@ export class MenuComida implements OnInit {
 
   cargarPorCategoria(categoria: string): void {
     this.categoriaSeleccionada.set(categoria);
+    this.categoriaCambiada.emit(this.nombreCategoria(categoria));
     this.cargando.set(true);
     this.error.set('');
     this.comidas.set([]); // Limpia la lista anterior
@@ -67,6 +69,27 @@ export class MenuComida implements OnInit {
         this.error.set(`No se pudieron cargar los platos de ${categoria}.`);
       }
     });
+  }
+
+  private nombreCategoria(categoria: string): string {
+    const nombres: { [categoria: string]: string } = {
+      Seafood: 'Mariscos',
+      Chicken: 'Pollo',
+      Dessert: 'Postres',
+      Vegetarian: 'Vegetariano',
+      Pasta: 'Pasta',
+      Pork: 'Cerdo',
+      Beef: 'Res',
+      Lamb: 'Cordero',
+      Miscellaneous: 'Variados',
+      Side: 'Acompañamientos',
+      Starter: 'Entradas',
+      Vegan: 'Vegano',
+      Breakfast: 'Desayunos',
+      Goat: 'Cabra'
+    };
+
+    return nombres[categoria] ?? categoria;
   }
 
   private asignarPrecios(): void {

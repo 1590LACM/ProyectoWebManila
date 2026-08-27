@@ -1,6 +1,6 @@
 <div class="encabezado">
 
-  <h1 class="titulo-pagina">Comidas</h1>
+  <h1 class="titulo-pagina">{{ tituloPagina }}</h1>
 
   <div class="barra-busqueda">
 
@@ -22,4 +22,4 @@
 
 </div>
 
-<app-menu-comida #menuHijo></app-menu-comida>
+<app-menu-comida #menuHijo (categoriaCambiada)="cambiarTituloCategoria($event)"></app-menu-comida>
