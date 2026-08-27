@@ -72,7 +72,7 @@ export class Juego implements OnInit {
       img.style.display = "block";
       this.contadorAciertos++;
     } else {
-      img.src = "/img/blanco.jpg";
+      img.src = "img/blanco.jpg";
       img.style.display = "block";
     }
 
