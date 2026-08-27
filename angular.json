@@ -25,13 +25,14 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.css" , "node_modules/bootstrap/dist/css/bootstrap.min.css"
-              ],      
-            "scripts": ["node_modules/bootstrap/dist/js/bootstrap.min.js","node_modules/@popperjs/core/dist/umd/popper.min.js"],
+            "styles": ["src/styles.css", "node_modules/bootstrap/dist/css/bootstrap.min.css"],
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/@popperjs/core/dist/umd/popper.min.js"
+            ],
             "security": {
               "allowedHosts": []
-            }      
+            }
           },
           "configurations": {
             "production": {
@@ -71,6 +72,9 @@
         },
         "test": {
           "builder": "@angular/build:unit-test"
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
