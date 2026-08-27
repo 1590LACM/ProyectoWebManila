@@ -42,7 +42,8 @@ export class ServicioApiBebidas {
     return this.http.get(`${this.urlBebida}/filter.php?c=${encodeURIComponent(categoria)}`);
   }
   obtenerMenuCompletoBebidas(): Observable<any[]> {
-    const categorias = ['Ordinary Drink', 'Cocktail', 'Shake', 'Other / Unknown', 'Cocoa', 'Shot'];
+    
+    const categorias = ['Beer','Cocktail','Cocoa','Coffee / Tea','Homemade Liqueur','Ordinary Drink','Other / Unknown','Punch / Party Drink','Shake','Shot','Soft Drink'];
 
     const peticiones = categorias.map(cat =>
       this.http.get<any>(`${this.urlBebida}/filter.php?c=${encodeURIComponent(cat)}`)

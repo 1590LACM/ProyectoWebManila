@@ -4,14 +4,17 @@
 
   <!-- Botones de categorías limpios -->
   <div class="d-flex gap-2 my-3 justify-content-center flex-wrap">
-    <button class="chip btn btn-outline-primary boton-categorias" (click)="cargarTodas()">Todos</button>
     <button class="chip btn btn-outline-primary boton-categorias" (click)="cargarPorCategoriaB('Ordinary Drink')">Bebida común</button>
     <button class="chip btn btn-outline-primary boton-categorias" (click)="cargarPorCategoriaB('Cocktail')">Coctel</button>
     <button class="chip btn btn-outline-primary boton-categorias" (click)="cargarPorCategoriaB('Shake')">Batido</button>
     <button class="chip btn btn-outline-primary boton-categorias" (click)="cargarPorCategoriaB('Cocoa')">Cacao</button>
     <button class="chip btn btn-outline-primary boton-categorias" (click)="cargarPorCategoriaB('Shot')">Shot</button>
     <button class="chip btn btn-outline-primary boton-categorias" (click)="cargarPorCategoriaB('Other / Unknown')">Otros</button>
-
+    <button class="chip btn btn-outline-primary boton-categorias" (click)="cargarPorCategoriaB('Beer')">Cerveza</button>
+    <button class="chip btn btn-outline-primary boton-categorias" (click)="cargarPorCategoriaB('Coffee / Tea')">Café y té</button>
+    <button class="chip btn btn-outline-primary boton-categorias" (click)="cargarPorCategoriaB('Homemade Liqueur')">Licor casero</button>
+    <button class="chip btn btn-outline-primary boton-categorias" (click)="cargarPorCategoriaB('Punch / Party Drink')">Ponche</button>
+    <button class="chip btn btn-outline-primary boton-categorias" (click)="cargarPorCategoriaB('Soft Drink')">Bebida sin alcohol</button>
   </div>
   <div class="row" *ngIf="!cargando()">
     <div class="col-md-4 col-sm-6 mb-4" *ngFor="let bebida of bebidas()">
