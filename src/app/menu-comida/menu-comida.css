@@ -119,10 +119,17 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   width: auto;
-  flex: 1 1 130px;
+  flex: 0 1 150px;
   white-space: normal;
 }
 
 .boton-categorias:hover {
   background-color: #b9ed7a !important;
+}
+
+@media (max-width: 576px) {
+  .boton-categorias {
+    flex: 1 1 calc(50% - 8px);
+    max-width: calc(50% - 8px);
+  }
 }
