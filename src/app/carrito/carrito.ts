@@ -12,6 +12,8 @@ import jsPDF from 'jspdf';
   styleUrl: './carrito.css',
 })
 export class Carrito {
+  private logo: string | null = null;
+
   // datos del cliente, agrupados en la entidad DatosCliente
   datosCliente: DatosCliente = {
     nombre: '',
@@ -22,6 +24,10 @@ export class Carrito {
   mensajeError = signal('');
 
   constructor(public servicioCarrito: ServicioCarrito) {}
+
+  ngOnInit(): void {
+    void this.cargarLogo();
+  }
 
   aumentar(item: ItemCarrito) {
     this.servicioCarrito.cambiarCantidad(item.id, item.cantidad + 1);
@@ -57,11 +63,11 @@ export class Carrito {
     this.generarPdf();
   }
 
-  async generarPdf(): Promise<void> {
+  generarPdf(): void {
     const doc = new jsPDF();
     const productos = this.servicioCarrito.productos();
     const total = this.servicioCarrito.total();
-    const logo = await this.cargarLogo();
+    const logo = this.logo;
     const anchoPagina = doc.internal.pageSize.getWidth();
     const altoPagina = doc.internal.pageSize.getHeight();
     const margen = 16;
@@ -163,19 +169,20 @@ export class Carrito {
     this.datosCliente = { nombre: '', celular: '', direccion: '' };
   }
 
-  private async cargarLogo(): Promise<string | null> {
+  private async cargarLogo(): Promise<void> {
     try {
-      const respuesta = await fetch('/img/logo.png');
+      const rutaLogo = new URL('img/logo.png', document.baseURI).href;
+      const respuesta = await fetch(rutaLogo);
       const archivo = await respuesta.blob();
 
-      return await new Promise<string>((resolver, rechazar) => {
+      this.logo = await new Promise<string>((resolver, rechazar) => {
         const lector = new FileReader();
         lector.onload = () => resolver(lector.result as string);
         lector.onerror = () => rechazar(lector.error);
         lector.readAsDataURL(archivo);
       });
     } catch {
-      return null;
+      this.logo = null;
     }
   }
 
