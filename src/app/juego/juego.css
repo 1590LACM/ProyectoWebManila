@@ -51,7 +51,7 @@
 .letrero {
   margin-top: 24px;
   text-align: center;
-  color: #e65c00;
+  color: var(--color-acento-principal);
   font-size: 2rem;
   font-weight: bold;
 }
@@ -62,7 +62,7 @@
   padding: 10px 22px;
   border: none;
   border-radius: 8px;
-  background-color: #198754;
+  background-color: var(--color-acento-principal);
   color: #fff;
   cursor: pointer;
   font-weight: bold;
