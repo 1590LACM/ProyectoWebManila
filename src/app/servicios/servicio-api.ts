@@ -47,7 +47,8 @@ export class ServicioApi {
 
   // Obtiene el menú consolidado de las 5 categorías exactas de la imagen
   obtenerMenuCompletoComidas(): Observable<any[]> {
-    const categorias = ['Seafood', 'Chicken', 'Dessert', 'Vegetarian', 'Pasta', 'Pork'];
+  
+    const categorias = ['Beef', 'Chicken', 'Dessert', 'Lamb', 'Miscellaneous', 'Pasta', 'Pork', 'Seafood', 'Side', 'Starter', 'Vegan', 'Vegetarian', 'Breakfast', 'Goat'];
 
     const peticiones = categorias.map((cat) =>
       this.http.get<any>(`${this.apiUrl}/filter.php?c=${cat}`)
