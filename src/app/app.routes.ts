@@ -8,6 +8,7 @@ import { Bebidas } from './bebidas/bebidas';
 
 export const routes: Routes = [
     {path:'', component: Inicio},
+    {path:'inicio', redirectTo:'', pathMatch:'full'},
     {path:'comidas', component: Comidas},
     {path:'bebidas', component: Bebidas},
     {path: 'carrito', component: Carrito},
