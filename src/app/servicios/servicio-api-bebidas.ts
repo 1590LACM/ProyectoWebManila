@@ -37,8 +37,6 @@ export class ServicioApiBebidas {
   }
 
    bebidaPorCategoria(categoria: string): Observable<any> {
-    // CORRECCIÓN: Se cambió `this.apiUrl` por `this.urlBebida`
-    // ADEMÁS: Se añadió `encodeURIComponent` para evitar fallos con categorías con espacios o caracteres especiales
     return this.http.get(`${this.urlBebida}/filter.php?c=${encodeURIComponent(categoria)}`);
   }
   obtenerMenuCompletoBebidas(): Observable<any[]> {

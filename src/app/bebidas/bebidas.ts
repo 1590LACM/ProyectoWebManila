@@ -17,7 +17,6 @@ export class Bebidas {
   categoriaBebida: string = '';
   mostrarBotonSubir = false;
 
-  // Referencia al componente hijo <app-menu-bebida>
   @ViewChild('menuHijo') menuHijo!: MenuBebida;
 
   ejecutarBusqueda(): void {

@@ -31,12 +31,10 @@ export class ServicioApi {
     return this.http.get(`${this.apiUrl}/search.php?s=${nombre}`);
   }
 
-  // Buscar platillos por ingrediente principal
   buscarPorIngrediente(ingrediente: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/filter.php?i=${ingrediente}`);
   }
 
-  // Obtiene los platos de una sola categoría
   comidaPorCategoria(categoria: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/filter.php?c=${categoria}`);
   }
@@ -45,7 +43,6 @@ export class ServicioApi {
     return this.http.get(`${this.apiUrl}/lookup.php?i=${encodeURIComponent(id)}`);
   }
 
-  // Obtiene el menú consolidado de las 5 categorías exactas de la imagen
   obtenerMenuCompletoComidas(): Observable<any[]> {
   
     const categorias = ['Beef', 'Chicken', 'Dessert', 'Lamb', 'Miscellaneous', 'Pasta', 'Pork', 'Seafood', 'Side', 'Starter', 'Vegan', 'Vegetarian', 'Breakfast', 'Goat'];
@@ -69,7 +66,6 @@ export class ServicioApi {
     );
   }
 
-  // Generador de precios aleatorios
   asignarPrecioAleatorio(): number {
     return Math.floor(Math.random() * (40000 - 15000 + 1)) + 15000;
   }
