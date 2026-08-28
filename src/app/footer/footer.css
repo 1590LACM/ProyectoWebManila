@@ -1,9 +1,27 @@
 footer {
-    background-color: #343a40;
-    color: #fff;
-    padding: 3rem 0;
-  }
+  background-color: #343a40;
+  color: #fff;
+  padding: 3rem 0;
+}
 
-  .social-icons a {
-    font-size: 1.25rem;
-  }
+footer .row:first-child {
+  align-items: flex-start;
+}
+
+footer h5 {
+  margin-bottom: 1rem;
+}
+
+footer p {
+  margin-bottom: 0.5rem;
+}
+
+footer ul {
+  margin-bottom: 0;
+}
+
+.social-icons a {
+  display: inline-block;
+  font-size: 1.25rem;
+  line-height: 1;
+}
