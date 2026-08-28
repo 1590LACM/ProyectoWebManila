@@ -34,3 +34,13 @@
 
 </div>
 <app-menu-bebida #menuHijo (categoriaCambiada)="cambiarTituloCategoria($event)"></app-menu-bebida>
+
+<button
+  *ngIf="mostrarBotonSubir"
+  class="boton-subir"
+  type="button"
+  aria-label="Volver al inicio"
+  title="Volver al inicio"
+  (click)="subirAlInicio()">
+  ↑
+</button>

@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, HostListener, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MenuBebida } from "../menu-bebida/menu-bebida";
@@ -15,6 +15,7 @@ export class Bebidas {
   textoBusqueda: string = '';
   tipoBebida: string = '';
   categoriaBebida: string = '';
+  mostrarBotonSubir = false;
 
   // Referencia al componente hijo <app-menu-bebida>
   @ViewChild('menuHijo') menuHijo!: MenuBebida;
@@ -37,6 +38,15 @@ export class Bebidas {
 
   cambiarTituloCategoria(nombreCategoria: string): void {
     this.tituloPagina = nombreCategoria;
+  }
+
+  @HostListener('window:scroll')
+  actualizarVisibilidadBoton(): void {
+    this.mostrarBotonSubir = window.scrollY > 0;
+  }
+
+  subirAlInicio(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
 

@@ -64,6 +64,37 @@
   filter: brightness(1.1);
   
 }
+
+.boton-subir {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1000;
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  padding: 0 0 4px;
+  border: 2px solid var(--color-acento-principal);
+  border-radius: 50%;
+  background-color: var(--color-acento-principal);
+  color: var(--color-fondo);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 35%);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.boton-subir:hover {
+  filter: brightness(1.1);
+  transform: translateY(-3px);
+}
+
+.boton-subir:focus-visible {
+  outline: 3px solid var(--color-texto-claro);
+  outline-offset: 3px;
+}
  
 @media (max-width: 700px) {
  
